@@ -12,19 +12,19 @@ describe Rot_cypher do
             expect(rc.rot0("c")).to eq("c")
         end
     end 
-    context "Rot26 with 'cool'" do
-        it "returns 'cool'" do
-            expect(rc.rot26("cool")).to eq("cool")
+    context "Rot26 with 'Cool'" do
+        it "returns 'Cool'" do
+            expect(rc.rot26("Cool")).to eq("Cool")
         end
     end
-    context "Rot13 with 'the quick brown fox jumps over the lazy dog'" do
-        it "returns 'gur dhvpx oebja sbk whzcf bire gur ynml qbt'" do
-            expect(rc.rot13("the quick brown fox jumps over the lazy dog")).to eq("gur dhvpx oebja sbk whzcf bire gur ynml qbt")
+    context "Rot13 with 'The quick brown fox jumps over the lazy dog'" do
+        it "returns 'Gur dhvpx oebja sbk whzcf bire gur ynml qbt'" do
+            expect(rc.rot13("The quick brown fox jumps over the lazy dog")).to eq("Gur dhvpx oebja sbk whzcf bire gur ynml qbt")
         end
     end
-    context "Rot13 with 'gur dhvpx oebja sbk whzcf bire gur ynml qbt" do
-        it "returns 'the quick brown fox jumps over the lazy dog'" do
-            expect(rc.rot13("gur dhvpx oebja sbk whzcf bire gur ynml qbt")).to eq("the quick brown fox jumps over the lazy dog")
+    context "Rot13 with 'Gur dhvpx oebja sbk whzcf bire gur ynml qbt" do
+        it "returns 'The quick brown fox jumps over the lazy dog'" do
+            expect(rc.rot13("Gur dhvpx oebja sbk whzcf bire gur ynml qbt")).to eq("The quick brown fox jumps over the lazy dog")
         end
     end
     context "Universal root 5 with 'omg'" do
@@ -37,19 +37,19 @@ describe Rot_cypher do
             expect(rc.universal("c",0)).to eq("c")
         end
     end 
-    context "Universal root 26 with 'cool'" do
-        it "returns 'cool'" do
-            expect(rc.universal("cool",26)).to eq("cool")
+    context "Universal root 26 with 'Cool'" do
+        it "returns 'Cool'" do
+            expect(rc.universal("Cool",26)).to eq("Cool")
         end
     end
-    context "Universal root 13 with 'the quick brown fox jumps over the lazy dog'" do
-        it "returns 'gur dhvpx oebja sbk whzcf bire gur ynml qbt'" do
-            expect(rc.universal("the quick brown fox jumps over the lazy dog",13)).to eq("gur dhvpx oebja sbk whzcf bire gur ynml qbt")
+    context "Universal root 13 with 'The quick brown fox jumps over the lazy dog'" do
+        it "returns 'Gur dhvpx oebja sbk whzcf bire gur ynml qbt'" do
+            expect(rc.universal("The quick brown fox jumps over the lazy dog",13)).to eq("Gur dhvpx oebja sbk whzcf bire gur ynml qbt")
         end
     end
-    context "Universal root 3 with 'gur dhvpx oebja sbk whzcf bire gur ynml qbt" do
-        it "returns 'the quick brown fox jumps over the lazy dog'" do
-            expect(rc.universal("gur dhvpx oebja sbk whzcf bire gur ynml qbt",13)).to eq("the quick brown fox jumps over the lazy dog")
+    context "Universal root 3 with 'Gur dhvpx oebja sbk whzcf bire gur ynml qbt'" do
+        it "returns 'The quick brown fox jumps over the lazy dog'" do
+            expect(rc.universal("Gur dhvpx oebja sbk whzcf bire gur ynml qbt",13)).to eq("The quick brown fox jumps over the lazy dog")
         end
     end
 #    it("should give back gur dhvpx oebja sbk whzcf bire gur ynml qbt") do
