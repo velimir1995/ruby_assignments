@@ -1,4 +1,3 @@
-# spec/roth_cypher_spec.rb
 require "rot_cypher"
 describe Rot_cypher do
     let(:rc){Rot_cypher.new}
@@ -52,10 +51,4 @@ describe Rot_cypher do
             expect(rc.universal("Gur dhvpx oebja sbk whzcf bire gur ynml qbt",13)).to eq("The quick brown fox jumps over the lazy dog")
         end
     end
-#    it("should give back gur dhvpx oebja sbk whzcf bire gur ynml qbt") do
-#        rc.rot13("the quick brown fox jumps over the lazy dog").should == "gur dhvpx oebja sbk whzcf bire gur ynml qbt"
-#    end
-#    it("should return: omg =trl ") do
-#        rc.rot5("omg").should == "trl"
-#    end    
 end

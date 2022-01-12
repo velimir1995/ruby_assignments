@@ -1,7 +1,5 @@
 class Rot_cypher 
-    #@letters_array = ("a".."z").to_a -- ovo je bilo gresno
-
-    def initialize #ovo dok nisam dodao namucih se
+    def initialize
         @letters_array = ("a".."z").to_a
         @upper_letters_array = ("A".."Z").to_a
     end
