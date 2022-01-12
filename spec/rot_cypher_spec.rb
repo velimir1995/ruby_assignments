@@ -1,6 +1,6 @@
 require "rot_cypher"
-describe Rot_cypher do
-    let(:rc) {Rot_cypher.new}
+describe RotCypher do
+    let(:rc) {RotCypher.new}
 
     context "Universal root 5 with 'omg'" do
         it "returns 'trl'" do
