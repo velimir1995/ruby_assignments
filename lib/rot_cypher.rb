@@ -4,7 +4,7 @@ class RotCypher
 
     def encrypt(message_to_encrypt, shift_key)
         encrypted_message = ""
-        message_to_encrypt.split('').each { |a|
+        message_to_encrypt.split('').each do |a| 
             if(a == " ")
                 encrypted_message += " "
             else    
@@ -17,7 +17,7 @@ class RotCypher
                 end 
 
             end
-        }
+        end
         encrypted_message
     end
 end
