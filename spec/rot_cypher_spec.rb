@@ -1,31 +1,7 @@
 require "rot_cypher"
 describe Rot_cypher do
-    let(:rc){Rot_cypher.new}
-    context "Rot5 with 'omg'" do
-        it "returns 'trl'" do
-            expect(rc.rot5("omg")).to eq("trl")
-        end
-    end
-    context "Rot0 with 'c'" do
-        it "returns 'c'" do
-            expect(rc.rot0("c")).to eq("c")
-        end
-    end 
-    context "Rot26 with 'Cool'" do
-        it "returns 'Cool'" do
-            expect(rc.rot26("Cool")).to eq("Cool")
-        end
-    end
-    context "Rot13 with 'The quick brown fox jumps over the lazy dog'" do
-        it "returns 'Gur dhvpx oebja sbk whzcf bire gur ynml qbt'" do
-            expect(rc.rot13("The quick brown fox jumps over the lazy dog")).to eq("Gur dhvpx oebja sbk whzcf bire gur ynml qbt")
-        end
-    end
-    context "Rot13 with 'Gur dhvpx oebja sbk whzcf bire gur ynml qbt" do
-        it "returns 'The quick brown fox jumps over the lazy dog'" do
-            expect(rc.rot13("Gur dhvpx oebja sbk whzcf bire gur ynml qbt")).to eq("The quick brown fox jumps over the lazy dog")
-        end
-    end
+    let(:rc) {Rot_cypher.new}
+
     context "Universal root 5 with 'omg'" do
         it "returns 'trl'" do
             expect(rc.universal("omg",5)).to eq("trl")
