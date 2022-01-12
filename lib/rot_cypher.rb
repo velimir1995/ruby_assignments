@@ -2,7 +2,7 @@ class RotCypher
     Letters_array = ("a".."z").to_a
     Upper_letters_array = ("A".."Z").to_a
 
-    def universal(message_to_encrypt, shift_key)
+    def encrypt(message_to_encrypt, shift_key)
         encrypted_message = ""
         message_to_encrypt.split('').each { |a|
             if(a == " ")
