@@ -1,6 +1,6 @@
 class RotCypher
-  Letters_array = ("a".."z").to_a
-  Upper_letters_array = ("A".."Z").to_a
+  LETTERS_ARRAY = ("a".."z").to_a.freeze
+  UPPER_LETTERS_ARRAY = ("A".."Z").to_a.freeze
 
   def encrypt(message_to_encrypt, shift_key)
     encrypted_message = ""
@@ -8,20 +8,16 @@ class RotCypher
       if(letter_to_encrypt == " ")
         encrypted_message += " "
       else
-        if Upper_letters_array.include? letter_to_encrypt
-          index = if(Upper_letters_array.find_index(letter_to_encrypt) < 26 - shift_key)
-                    (Upper_letters_array.find_index(letter_to_encrypt) + shift_key)
-                  else
-                    (Upper_letters_array.find_index(letter_to_encrypt) - 26 + shift_key)
-                  end
-          encrypted_message += Upper_letters_array[index]
+        index_of_unencrypted_letter = UPPER_LETTERS_ARRAY.find_index(letter_to_encrypt.upcase)
+        index_of_encrypted_letter = if(index_of_unencrypted_letter < 26 - shift_key)
+                  (index_of_unencrypted_letter + shift_key)
+                else
+                  (index_of_unencrypted_letter + shift_key - 26)
+                end
+        if UPPER_LETTERS_ARRAY.include? letter_to_encrypt
+          encrypted_message += UPPER_LETTERS_ARRAY[index_of_encrypted_letter]
         else
-          index = if(Letters_array.find_index(letter_to_encrypt) < 26 - shift_key)
-                    (Letters_array.find_index(letter_to_encrypt) + shift_key)
-                  else
-                    (Letters_array.find_index(letter_to_encrypt) - 26 + shift_key)
-                  end
-          encrypted_message += Letters_array[index]
+          encrypted_message += LETTERS_ARRAY[index_of_encrypted_letter]
         end
       end
     end
