@@ -1,6 +1,6 @@
 require "rot_cypher"
 describe RotCypher do
-    let(:rc) {RotCypher.new}
+  let(:rc) {RotCypher.new}
 
   context "Encrypt with shift key  5 with 'omg'" do
       it "returns 'trl'" do
