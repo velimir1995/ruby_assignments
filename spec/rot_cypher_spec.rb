@@ -2,29 +2,43 @@ require "rot_cypher"
 describe RotCypher do
   let(:rc) {RotCypher.new}
 
-  context "Encrypt with shift key  5 with 'omg'" do
-      it "returns 'trl'" do
-        expect(rc.encrypt("omg",5)).to eq("trl")
+  context "Encrypt with shift key 5 with 'omg'" do
+    actual = "omg"
+    expected = "trl"
+    it "returns '#{expected}'" do
+      expect(rc.encrypt(actual,5)).to eq(expected)
+    end
+  end
+
+  context "Encrypt with shift key 0 with 'c'" do
+    actual = "c"
+    expected = "c"
+    it "returns '#{expected}'" do
+      expect(rc.encrypt(actual,0)).to eq(expected)
+    end
+  end
+
+  context "Encrypt with shift key 26 with 'Cool'" do
+    actual = "Cool"
+    expected = "Cool"
+    it "returns '#{expected}'" do
+        expect(rc.encrypt(expected,26)).to eq(expected)
       end
   end
-  context "Encrypt with shift key  0 with 'c'" do
-      it "returns 'c'" do
-        expect(rc.encrypt("c",0)).to eq("c")
+
+  context "Encrypt with shift key 13 with 'The quick brown fox jumps over the lazy dog'" do
+    actual = "The quick brown fox jumps over the lazy dog"
+    expected = "Gur dhvpx oebja sbk whzcf bire gur ynml qbt"
+    it "returns '#{expected}'" do
+        expect(rc.encrypt(actual,13)).to eq(expected)
       end
   end
-  context "Encrypt with shift key  26 with 'Cool'" do
-      it "returns 'Cool'" do
-        expect(rc.encrypt("Cool",26)).to eq("Cool")
-      end
-  end
-  context "Encrypt with shift key  13 with 'The quick brown fox jumps over the lazy dog'" do
-      it "returns 'Gur dhvpx oebja sbk whzcf bire gur ynml qbt'" do
-        expect(rc.encrypt("The quick brown fox jumps over the lazy dog",13)).to eq("Gur dhvpx oebja sbk whzcf bire gur ynml qbt")
-      end
-  end
-  context "Encrypt with shift key  3 with 'Gur dhvpx oebja sbk whzcf bire gur ynml qbt'" do
-      it "returns 'The quick brown fox jumps over the lazy dog'" do
-        expect(rc.encrypt("Gur dhvpx oebja sbk whzcf bire gur ynml qbt",13)).to eq("The quick brown fox jumps over the lazy dog")
+
+  context "Encrypt with shift key 13 with 'Gur dhvpx oebja sbk whzcf bire gur ynml qbt'" do
+    actual = "Gur dhvpx oebja sbk whzcf bire gur ynml qbt"
+    expected = "The quick brown fox jumps over the lazy dog"
+    it "returns '#{expected}'" do
+        expect(rc.encrypt(actual,13)).to eq(expected)
       end
   end
 end
