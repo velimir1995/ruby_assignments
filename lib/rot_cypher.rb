@@ -15,7 +15,7 @@ class RotCypher
         next
       end
       @letter = unencrypted_letter
-      encrypted_message += letter_encryption
+      encrypted_message += encrypt_letter
     end
     encrypted_message
   end
@@ -35,7 +35,7 @@ class RotCypher
     index_to_check < LETTERS_ARRAY.length()
   end
 
-  def letter_encryption
+  def encrypt_letter
     encrypted_letter_index = prepare_encryption_index
     if LETTERS_ARRAY.include?(@letter)
       LETTERS_ARRAY[encrypted_letter_index]
