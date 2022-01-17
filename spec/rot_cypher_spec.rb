@@ -7,15 +7,15 @@ describe RotCypher do
       actual = "omg"
       expected = "trl"
       it "returns '#{expected}'" do
-        expect(rc.encrypt(actual,5)).to eq(expected)
+        expect(rc.encrypt(actual)).to eq(expected)
       end
     end
 
     context "Encrypt with shift key 0 with 'c'" do
-      actual = "c"
+      actual = rc.encrypt("omg",0)
       expected = "c"
       it "returns '#{expected}'" do
-        expect(rc.encrypt(actual,0)).to eq(expected)
+        expect(actual).to eq(expected)
       end
     end
 

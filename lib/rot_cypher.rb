@@ -1,30 +1,34 @@
 class RotCypher
   LETTERS_ARRAY = ("a".."z").to_a.freeze
   UPPER_LETTERS_ARRAY = ("A".."Z").to_a.freeze
+  @letter
+  @shift_key
 
-  def encrypt(message_to_encrypt, shift_key)
+  def initialize(shift_key)
+    @shift_key = shift_key
+  end
+
+  def encrypt(message_to_encrypt)
     encrypted_message = ""
-    message_to_encrypt.split('').each do |unencrypted_letter|
-      if unencrypted_letter == " "
-        encrypted_message += " "
+    message_to_encrypt.each_char do |unencrypted_letter|
+      if  unencrypted_letter  == " "
+        encrypted_message +=" "
         next
       end
-      index_to_encrypt = prepare_encryption_index(unencrypted_letter, shift_key)
-      encrypted_message += letter_encryption(index_to_encrypt, upcase_letter?(unencrypted_letter))
+      @letter = unencrypted_letter
+      encrypted_message += letter_encryption()
     end
     encrypted_message
   end
 
-  def letter_encryption(encrypted_letter_index, is_upcase)
-    if is_upcase
-      UPPER_LETTERS_ARRAY[encrypted_letter_index]
-    else
-      LETTERS_ARRAY[encrypted_letter_index]
-    end
+  def change_encryption_key(new_shift_key)
+    @shift_key = new_shift_key
   end
 
-  def prepare_encryption_index(letter_to_encrypt, shift_step)
-    prepared_index_to_encrypt = LETTERS_ARRAY.find_index(letter_to_encrypt.downcase) + shift_step
+private
+
+  def prepare_encryption_index
+    prepared_index_to_encrypt = LETTERS_ARRAY.find_index(@letter.downcase) + @shift_key
     prepared_index_to_encrypt = fix_index_out_of_bounds(prepared_index_to_encrypt)
   end
 
@@ -36,11 +40,13 @@ class RotCypher
     fixed_index_to_encrypt
   end
 
-  def upcase_letter?(letter_to_encrypt)
-    if letter_to_encrypt.upcase == letter_to_encrypt
-      true
+  def letter_encryption()
+    encrypted_letter_index = prepare_encryption_index
+    if UPPER_LETTERS_ARRAY.include?(@letter)
+      UPPER_LETTERS_ARRAY[encrypted_letter_index]
     else
-      false
+      LETTERS_ARRAY[encrypted_letter_index]
     end
   end
+
 end
