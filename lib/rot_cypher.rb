@@ -15,7 +15,7 @@ class RotCypher
         next
       end
       @letter = unencrypted_letter
-      encrypted_message += letter_encryption()
+      encrypted_message += letter_encryption
     end
     encrypted_message
   end
@@ -24,22 +24,18 @@ class RotCypher
     @shift_key = new_shift_key
   end
 
-private
+  private
 
   def prepare_encryption_index
-    prepared_index_to_encrypt = LETTERS_ARRAY.find_index(@letter.downcase) + @shift_key
-    prepared_index_to_encrypt = fix_index_out_of_bounds(prepared_index_to_encrypt)
+    encrypted_index = LETTERS_ARRAY.find_index(@letter.downcase) + @shift_key
+    inbound_index?(encrypted_index) ? encrypted_index : encrypted_index - LETTERS_ARRAY.length()
   end
 
-  def fix_index_out_of_bounds(index_to_fix)
-    fixed_index_to_encrypt = index_to_fix
-    if index_to_fix >= LETTERS_ARRAY.length()
-      fixed_index_to_encrypt -= LETTERS_ARRAY.length()
-    end
-    fixed_index_to_encrypt
+  def inbound_index?(index_to_check)
+    index_to_check < LETTERS_ARRAY.length()
   end
 
-  def letter_encryption()
+  def letter_encryption
     encrypted_letter_index = prepare_encryption_index
     if LETTERS_ARRAY.include?(@letter)
       LETTERS_ARRAY[encrypted_letter_index]
