@@ -1,6 +1,5 @@
 class RotCypher
   LETTERS_ARRAY = ("a".."z").to_a.freeze
-  UPPER_LETTERS_ARRAY = ("A".."Z").to_a.freeze
   @letter
   @shift_key
 
@@ -42,10 +41,10 @@ private
 
   def letter_encryption()
     encrypted_letter_index = prepare_encryption_index
-    if UPPER_LETTERS_ARRAY.include?(@letter)
-      UPPER_LETTERS_ARRAY[encrypted_letter_index]
-    else
+    if LETTERS_ARRAY.include?(@letter)
       LETTERS_ARRAY[encrypted_letter_index]
+    else
+      LETTERS_ARRAY[encrypted_letter_index].upcase
     end
   end
 
