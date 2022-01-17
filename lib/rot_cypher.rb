@@ -1,4 +1,6 @@
 class RotCypher
+  attr_accessor :shift_key
+
   LETTERS_ARRAY = ("a".."z").to_a.freeze
   @letter
   @shift_key
@@ -18,10 +20,6 @@ class RotCypher
       encrypted_message += encrypt_letter
     end
     encrypted_message
-  end
-
-  def change_encryption_key(new_shift_key)
-    @shift_key = new_shift_key
   end
 
   private
