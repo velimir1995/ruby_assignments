@@ -47,5 +47,25 @@ describe RotCypher do
         expect(rc.encrypt(message)).to eq(expected)
       end
     end
+
+    context "Encrypt with shift key 13 with 'The quick brown fox jumps over the \"lazy\" dog'" do
+      message = "The quick brown fox jumps over the \"lazy\" dog"
+      expected = "Gur dhvpx oebja sbk whzcf bire gur \"ynml\" qbt"
+      it "returns '#{expected}'" do
+        rc.shift_key = 13
+        expect(rc.encrypt(message)).to eq(expected)
+      end
+    end
+
+    context "Encrypt with shift key 13 with 'The quick brown fox jumps over the lazy dog!!" do
+      message = "The quick brown fox jumps over the lazy dog!!"
+      expected = "Gur dhvpx oebja sbk whzcf bire gur ynml qbt!!"
+      it "returns '#{expected}'" do
+        rc.shift_key = 13
+        expect(rc.encrypt(message)).to eq(expected)
+      end
+    end
+
   end
+
 end

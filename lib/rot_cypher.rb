@@ -10,8 +10,8 @@ class RotCypher
   def encrypt(message_to_encrypt)
     encrypted_message = ""
     message_to_encrypt.each_char do |raw_letter|
-      if  raw_letter == " "
-        encrypted_message << " "
+      if  !LETTERS_ARRAY.include?(raw_letter.downcase)
+        encrypted_message << raw_letter
         next
       end
       encrypted_message << encrypt_letter(raw_letter)
@@ -23,11 +23,11 @@ class RotCypher
 
   def prepare_encryption_index(raw_letter)
     encrypted_index = LETTERS_ARRAY.find_index(raw_letter.downcase) + @shift_key
-    inbound_index?(encrypted_index) ? encrypted_index : encrypted_index - LETTERS_ARRAY.length()
+    inbound_index?(encrypted_index) ? encrypted_index : encrypted_index - LETTERS_ARRAY.length
   end
 
   def inbound_index?(index_to_check)
-    index_to_check < LETTERS_ARRAY.length()
+    index_to_check < LETTERS_ARRAY.length
   end
 
   def encrypt_letter(raw_letter)
