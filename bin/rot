@@ -1,15 +1,16 @@
 #!/usr/bin/env ruby
 
 require_relative "../lib/rot_cypher"
-
-puts ARGV[0]
-rot_cypher = RotCypher.new(ARGV.shift.to_i)
-puts ARGV.join(" ")
-puts rot_cypher.encrypt(ARGV.join(" "))
-
-puts "Please fill in message to encrypt and press enter"
-message_to_encrypt = STDIN.gets.chomp
-puts "And now fill in numeric key(0-26) for encryption and press enter"
-shift_encrypt = STDIN.gets.chomp.to_i
-rot_cypher.shift_key = shift_encrypt
-puts rot_cypher.encrypt(message_to_encrypt)
+if ARGV.length != 0
+  puts ARGV[0]
+  rot_cypher = RotCypher.new(ARGV.shift.to_i)
+  puts ARGV.join(" ")
+  puts rot_cypher.encrypt(ARGV.join(" "))
+else
+  puts "Please fill in message to encrypt and press enter"
+  message_to_encrypt = STDIN.gets.chomp
+  puts "And now fill in numeric key(0-26) for encryption and press enter"
+  shift_encrypt = STDIN.gets.chomp.to_i
+  rot_cypher = RotCypher.new(shift_encrypt)
+  puts rot_cypher.encrypt(message_to_encrypt)
+end
