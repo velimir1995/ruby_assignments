@@ -1,5 +1,4 @@
 class RotCypher
-  attr_accessor :shift_key
 
   LETTERS_ARRAY = ("a".."z").to_a.freeze
 

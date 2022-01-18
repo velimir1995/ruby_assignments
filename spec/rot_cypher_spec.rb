@@ -1,14 +1,16 @@
 require "rot_cypher"
 describe RotCypher do
   describe "#encryption" do
-    let(:rc) {RotCypher.new(5)}
+    let(:rot5) {RotCypher.new(5)}
+    let(:rot0) {RotCypher.new(0)}
+    let(:rot26) {RotCypher.new(26)}
+    let(:rot13) {RotCypher.new(13)}
 
     context "Encrypt with shift key 5 with 'omg'" do
       message = "omg"
       expected = "trl"
       it "returns '#{expected}'" do
-        rc.shift_key = 5
-        expect(rc.encrypt(message)).to eq(expected)
+        expect(rot5.encrypt(message)).to eq(expected)
       end
     end
 
@@ -16,8 +18,7 @@ describe RotCypher do
       message = "c"
       expected = "c"
       it "returns '#{expected}'" do
-        rc.shift_key = 0
-        expect(rc.encrypt(message)).to eq(expected)
+        expect(rot0.encrypt(message)).to eq(expected)
       end
     end
 
@@ -25,8 +26,7 @@ describe RotCypher do
       message = "Cool"
       expected = "Cool"
       it "returns '#{expected}'" do
-        rc.shift_key = 26
-        expect(rc.encrypt(message)).to eq(expected)
+        expect(rot26.encrypt(message)).to eq(expected)
       end
     end
 
@@ -34,8 +34,7 @@ describe RotCypher do
       message = "The quick brown fox jumps over the lazy dog"
       expected = "Gur dhvpx oebja sbk whzcf bire gur ynml qbt"
       it "returns '#{expected}'" do
-        rc.shift_key = 13
-        expect(rc.encrypt(message)).to eq(expected)
+        expect(rot13.encrypt(message)).to eq(expected)
       end
     end
 
@@ -43,8 +42,7 @@ describe RotCypher do
       message = "Gur dhvpx oebja sbk whzcf bire gur ynml qbt"
       expected = "The quick brown fox jumps over the lazy dog"
       it "returns '#{expected}'" do
-        rc.shift_key = 13
-        expect(rc.encrypt(message)).to eq(expected)
+        expect(rot13.encrypt(message)).to eq(expected)
       end
     end
 
@@ -52,8 +50,7 @@ describe RotCypher do
       message = "The quick brown fox jumps over the \"lazy\" dog"
       expected = "Gur dhvpx oebja sbk whzcf bire gur \"ynml\" qbt"
       it "returns '#{expected}'" do
-        rc.shift_key = 13
-        expect(rc.encrypt(message)).to eq(expected)
+        expect(rot13.encrypt(message)).to eq(expected)
       end
     end
 
@@ -61,8 +58,7 @@ describe RotCypher do
       message = "The quick brown fox jumps over the lazy dog!!"
       expected = "Gur dhvpx oebja sbk whzcf bire gur ynml qbt!!"
       it "returns '#{expected}'" do
-        rc.shift_key = 13
-        expect(rc.encrypt(message)).to eq(expected)
+        expect(rot13.encrypt(message)).to eq(expected)
       end
     end
 
