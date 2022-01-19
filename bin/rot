@@ -8,7 +8,7 @@ if ARGV.length != 0
   puts rot_cypher.encrypt(ARGV.join(" "))
 else
   puts "Please fill in message to encrypt and press enter"
-  message_to_encrypt = gets.chompg
+  message_to_encrypt = gets.chomp
   puts "And now fill in numeric key(0-26) for encryption and press enter"
   shift_encrypt = gets.chomp.to_i
   rot_cypher = RotCypher.new(shift_encrypt)
