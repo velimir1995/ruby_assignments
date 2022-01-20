@@ -16,7 +16,7 @@ describe RotCypher do
     end
 
     context "When send 'c' while on shift key 0" do
-      it "should return 'c'" do
+      it "return 'c'" do
         message = "c"
         expected = "c"
         expect(rot0.encrypt(message)).to eq(expected)
@@ -24,7 +24,7 @@ describe RotCypher do
     end
 
     context "When send 'Cool' while on shift key 26" do
-      it "should return 'Cool'" do
+      it "return 'Cool'" do
         message = "Cool"
         expected = "Cool"
         expect(rot26.encrypt(message)).to eq(expected)
@@ -32,7 +32,7 @@ describe RotCypher do
     end
 
     context "When send 'The quick brown fox jumps over the lazy dog' while on shift key 13" do
-      it "should return 'Gur dhvpx oebja sbk whzcf bire gur ynml qbt'" do
+      it "return 'Gur dhvpx oebja sbk whzcf bire gur ynml qbt'" do
         message = "The quick brown fox jumps over the lazy dog"
         expected = "Gur dhvpx oebja sbk whzcf bire gur ynml qbt"
         expect(rot13.encrypt(message)).to eq(expected)
@@ -40,7 +40,7 @@ describe RotCypher do
     end
 
     context "When send 'Gur dhvpx oebja sbk whzcf bire gur ynml qbt' while on shift key 13" do
-      it "should return 'The quick brown fox jumps over the lazy dog'" do
+      it "return 'The quick brown fox jumps over the lazy dog'" do
         message = "Gur dhvpx oebja sbk whzcf bire gur ynml qbt"
         expected = "The quick brown fox jumps over the lazy dog"
         expect(rot13.encrypt(message)).to eq(expected)
@@ -48,7 +48,7 @@ describe RotCypher do
     end
 
     context "When send text with special characters" do
-      it "should not change them" do
+      it "not change them" do
         message = "The quick brown fox jumps over the \"lazy\" dog"
         expected = "Gur dhvpx oebja sbk whzcf bire gur \"ynml\" qbt"
         expect(rot13.encrypt(message)).to eq(expected)
