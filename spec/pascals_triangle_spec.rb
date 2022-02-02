@@ -4,7 +4,7 @@ describe PascalsTriangle do
   describe "#generate_triangle" do
     let(:pastri) {PascalsTriangle.new}
 
-    context "When sent 7, triangle has 7 rows" do
+    context "When sent 7, triangle length" do
       it "return 7" do
         expect(pastri.generate_triangle(7).length).to eq(7)
       end
@@ -22,7 +22,7 @@ describe PascalsTriangle do
     let(:pastri) {PascalsTriangle.new}
 
     context "When sent 8 " do
-      it "return [1,7,21,35,35,21,7]" do
+      it "return [1,7,21,35,35,21,7,1]" do
         expected = [1,7,21,35,35,21,7,1]
         expect(pastri.get_row(8)).to eq(expected)
       end
