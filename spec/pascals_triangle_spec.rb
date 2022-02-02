@@ -1,110 +1,76 @@
 require "pascals_triangle"
 describe PascalsTriangle do
 
-  describe "#encrypt" do
-    let(:pastri4) {PascalsTriangle.new(4)}
-    let(:pastri7) {PascalsTriangle.new(7)}
+  describe "#generate_triangle" do
+    let(:pastri) {PascalsTriangle.new}
 
-    context "When created 7 rows pascal triangle has 7 rows" do
+    context "When sent 7, triangle has 7 rows" do
       it "return 7" do
-        expected = 7
-        expect(pastri7.get_number_of_rows).to eq(expected)
+        expect(pastri.generate_triangle(7).length).to eq(7)
       end
     end
 
-    context "When use 4 rows pascal triangle and ask for row at index 4" do
+    context "When sent 5,and try to acces row on index 6" do
       it "return nil" do
-        message = 4
-        expected = nil
-        expect(pastri4.get_row(message)).to eq(expected)
+        expect(pastri.generate_triangle(5)[6]).to eq(nil)
       end
     end
 
-    context "When use 4 rows pascal triangle and ask for row at index 3" do
-      it "return [1, 3, 3, 1]" do
-        message = 3
-        expected = [1,3,3,1]
-        expect(pastri4.get_row(message)).to eq(expected)
+  end
+
+  describe "#get_row" do
+    let(:pastri) {PascalsTriangle.new}
+
+    context "When sent 8 " do
+      it "return [1,7,21,35,35,21,7]" do
+        expected = [1,7,21,35,35,21,7,1]
+        expect(pastri.get_row(8)).to eq(expected)
       end
     end
 
-    context "When use 4 rows pascal triangle and ask for field at row index 3 with field index 2" do
-      it "return 3" do
-        message1 = 3
-        message2 = 2
-        expected = 3
-        expect(pastri4.get_field_by_indexes(message1,message2)).to eq(expected)
-      end
-    end
-
-    context "When use 7 rows pascal triangle and ask for field at row index 6 with field index 4" do
-      it "return 15" do
-        message1 = 6
-        message2 = 4
-        expected = 15
-        expect(pastri7.get_field_by_indexes(message1,message2)).to eq(expected)
-      end
-    end
-
-    context "When use 7 rows pascal triangle and ask for field at row index 7 with field index 2" do
+    context "When sent 5 and try to access field at index 6" do
       it "return nil" do
-        message1 = 7
-        message2 = 2
-        expected = nil
-        expect(pastri7.get_field_by_indexes(message1,message2)).to eq(expected)
+        expect(pastri.get_row(5)[6]).to eq(nil)
       end
     end
 
-    context "When use 4 rows pascal triangle and ask for field at row index 2 with field index 4" do
+    context "When sent 9, and check field at index 6" do
+      it "return 28" do
+        expect(pastri.get_row(9)[6]).to eq(28)
+      end
+    end
+  end
+
+  describe "#get_field" do
+    let(:pastri) {PascalsTriangle.new}
+
+    context "When sent 8 as a row index and 7 as a field index" do
+      it "return 1" do
+        expect(pastri.get_field(8,7)).to eq(1)
+      end
+    end
+
+    context "When sent 5 as a row index and 7 as a field index" do
       it "return nil" do
-        message1 = 2
-        message2 = 4
-        expected = nil
-        expect(pastri7.get_field_by_indexes(message1,message2)).to eq(expected)
+        expect(pastri.get_field(5,7)).to eq(nil)
+      end
+    end
+  end
+
+  describe "#get_row_sum" do
+    let(:pastri) {PascalsTriangle.new}
+
+    context "When sent 8" do
+      it "return 256" do
+        expect(pastri.get_row_sum(8)).to eq(128)
       end
     end
 
-    context "When use 7 rows pascal triangle and ask for field at row index 7 with field index 2" do
-      it "return nil" do
-        message1 = 7
-        message2 = 2
-        expected = nil
-        expect(pastri7.get_field_by_indexes(message1,message2)).to eq(expected)
+    context "When sent 10" do
+      it "return 1024" do
+        expect(pastri.get_row_sum(10)).to eq(512)
       end
     end
-
-    context "When use 7 rows pascal triangle sum of row at index 7" do
-      it "return nil" do
-        message = 7
-        expected = nil
-        expect(pastri7.get_row_sum(message)).to eq(expected)
-      end
-    end
-
-    context "When use 7 rows pascal triangle sum of row at index 5" do
-      it "return 32" do
-        message = 5
-        expected = 32
-        expect(pastri7.get_row_sum(message)).to eq(expected)
-      end
-    end
-
-    context "When use 4 rows pascal triangle to see length of row at index 3" do
-      it "return 4" do
-        message = 3
-        expected = 4
-        expect(pastri4.get_length_of_row(message)).to eq(expected)
-      end
-    end
-
-    context "When use 4 rows pascal triangle to see length of row at index 5" do
-      it "return nil" do
-        message = 5
-        expected = nil
-        expect(pastri4.get_length_of_row(message)).to eq(expected)
-      end
-    end
-
   end
 
 end

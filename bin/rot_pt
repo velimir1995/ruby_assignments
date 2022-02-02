@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+require_relative "../lib/pascals_triangle"
+
+pas_tri = PascalsTriangle.new
+line_width = 500
+pas_tri.generate_triangle(ARGV[0]).each do |row|
+    puts (row.to_s.center(line_width))
+end
