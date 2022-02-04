@@ -2,9 +2,18 @@
 
 require_relative "../lib/pascals_triangle"
 
-pas_tri = PascalsTriangle.new
-calculated_triangle = pas_tri.generate_triangle(ARGV[0])
-line_width = calculated_triangle.last.to_s.length
-calculated_triangle.each do |row|
-    puts (row.to_s.center(line_width))
+def write_triangle(triangle)
+    if triangle.instance_of?(Array)
+        line_width = triangle.last.to_s.length
+        triangle.each do |row|
+            puts (row.to_s.center(line_width))
+        end
+    elsif triangle..instance_of?(String)
+        puts triangle.lines.map { |line| line.strip.center(triangle.lines.last.length) }
+    end
 end
+
+pas_tri = PascalsTriangle.new
+pas_tri.generate_triangle(ARGV[0])
+write_triangle(pas_tri.to_s)
+write_triangle(pas_tri.to_a)
