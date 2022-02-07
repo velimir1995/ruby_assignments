@@ -13,7 +13,6 @@ def write_triangle(triangle)
     end
 end
 
-pas_tri = PascalsTriangle.new
-pas_tri.generate_triangle(ARGV[0])
+pas_tri = PascalsTriangle.new(ARGV[0])
 write_triangle(pas_tri.to_s)
 write_triangle(pas_tri.to_a)
