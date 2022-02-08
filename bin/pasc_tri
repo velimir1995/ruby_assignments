@@ -3,12 +3,12 @@
 require_relative "../lib/pascals_triangle"
 
 def write_triangle(triangle)
-    if triangle.instance_of?(Array)
+    if triangle.is_a?(Array)
         line_width = triangle.last.to_s.length
         triangle.each do |row|
             puts (row.to_s.center(line_width))
         end
-    elsif triangle..instance_of?(String)
+    elsif triangle.is_a?(String)
         puts triangle.lines.map { |line| line.strip.center(triangle.lines.last.length) }
     end
 end
