@@ -6,7 +6,7 @@ describe PascalsTriangle do
 
     context "With initialized triangle" do
       it "return String" do
-        expect(pastri4.to_s.instance_of?(String)).to eq(true)
+        expect(pastri4.to_s).to be_a(String)
       end
     end
 
@@ -24,7 +24,7 @@ describe PascalsTriangle do
 
     context "With initialized triangle to 5" do
       it "return Array" do
-        expect(pastri5.to_a.instance_of?(Array)).to eq(true)
+        expect(pastri5.to_a).to be_a(Array)
       end
     end
 
