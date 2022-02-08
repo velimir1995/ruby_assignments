@@ -7,33 +7,31 @@ class PascalsTriangle
   end
 
   def to_s
-    generate_triangle unless @triangle
-    triangle_as_string
+    triangle.map { |row| row.join(" ") }.join("\n")
   end
 
   def to_a
-    generate_triangle unless @triangle
-    @triangle
+    triangle
   end
 
   private
 
+  def triangle
+    @triangle ? @triangle : generate_triangle
+  end
+
   def generate_triangle
     @triangle = [STARTING_ROW]
-    ((@triangle.length + 1)..@number_of_rows.to_i).to_a.each do |row_number|
-      @triangle.push(create_row(row_number))
+    (@number_of_rows.to_i-1).times do |row_number_index|
+      @triangle.push(create_row(row_number_index+1))
     end
     @triangle
   end
 
-  def triangle_as_string
-    @triangle.map { |row| row.join(" ") }.join("\n")
-  end
-
   def create_row(row_num)
     row = STARTING_ROW.dup
-    (row.length...row_num).to_a.reverse.each do |field_num|
-      field_num == row_num ? row.push(1) : row.push(row.last * field_num / (row_num - field_num))
+    row_num.times do |field_num_index|
+      row.push(row.last * (row_num + 1 - (field_num_index+1)) / (field_num_index+1))
     end
     row
   end
