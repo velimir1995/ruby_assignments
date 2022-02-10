@@ -17,7 +17,7 @@ class PascalsTriangle
   private
 
   def triangle
-    @triangle ? @triangle : generate_triangle
+    @triangle ||= generate_triangle
   end
 
   def generate_triangle
