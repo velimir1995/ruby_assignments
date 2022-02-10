@@ -3,33 +3,65 @@ describe PascalsTriangle do
 
   describe "#to_s" do
     let(:pastri4) {PascalsTriangle.new(4)}
+    let(:pastri1) {PascalsTriangle.new(1)}
+    let(:pastri5) {PascalsTriangle.new(5)}
 
-    context "With initialized triangle" do
+    context "When call" do
       it "return String" do
         expect(pastri4.to_s).to be_a(String)
       end
     end
 
-    context "With initialized triangle to 4" do
-      it "return 1\n1 1\n1 2 1\n1 3 3 1" do
+    context "When call with triangle initialized to 4" do
+      it "returns a 4-row triangle" do
         expected = "1\n1 1\n1 2 1\n1 3 3 1"
         expect(pastri4.to_s).to eq(expected)
+      end
+    end
+
+    context "When call with triangle initialized to 1" do
+      it "returns a single row triangle" do
+        expected = "1"
+        expect(pastri1.to_s).to eq(expected)
+      end
+    end
+
+    context "When call with triangle initialized to 5" do
+      it "returns a five-row triangle" do
+        expected = "1\n1 1\n1 2 1\n1 3 3 1\n1 4 6 4 1"
+        expect(pastri5.to_s).to eq(expected)
       end
     end
 
   end
 
   describe "#to_a" do
+    let(:pastri4) {PascalsTriangle.new(4)}
+    let(:pastri1) {PascalsTriangle.new(1)}
     let(:pastri5) {PascalsTriangle.new(5)}
 
-    context "With initialized triangle to 5" do
+    context "When call" do
       it "return Array" do
         expect(pastri5.to_a).to be_a(Array)
       end
     end
 
-    context "With initialized triangle to 5" do
-      it "return [[1],[1,1],[1,2,1],[1,3,3,1],[1,4,6,4,1]]" do
+    context "When call with triangle initialized to 4" do
+        it "returns a 4-row triangle" do
+        expected = [[1],[1,1],[1,2,1],[1,3,3,1]]
+        expect(pastri4.to_a).to eq(expected)
+      end
+    end
+
+    context "When call with triangle initialized to 1" do
+      it "returns a single row triangle" do
+        expected = [[1]]
+        expect(pastri1.to_a).to eq(expected)
+      end
+    end
+
+    context "When call with triangle initialized to 5" do
+      it "returns a 5-row triangle" do
         expected = [[1],[1,1],[1,2,1],[1,3,3,1],[1,4,6,4,1]]
         expect(pastri5.to_a).to eq(expected)
       end
