@@ -12,21 +12,21 @@ describe PascalsTriangle do
       end
     end
 
-    context "When initialized to 4" do
+    context "With triangle initialized to 4" do
       it "returns a 4-row triangle" do
         expected = "1\n1 1\n1 2 1\n1 3 3 1"
         expect(pastri4.to_s).to eq(expected)
       end
     end
 
-    context "When initialized to 1" do
+    context "With triangle initialized to 1" do
       it "returns a single row triangle" do
         expected = "1"
         expect(pastri1.to_s).to eq(expected)
       end
     end
 
-    context "When initialized to 5" do
+    context "With triangle initialized to 5" do
       it "returns a five-row triangle" do
         expected = "1\n1 1\n1 2 1\n1 3 3 1\n1 4 6 4 1"
         expect(pastri5.to_s).to eq(expected)
@@ -46,21 +46,21 @@ describe PascalsTriangle do
       end
     end
 
-    context "When initialized to 4" do
+    context "With triangle initialized to 4" do
         it "returns a 4-row triangle" do
         expected = [[1],[1,1],[1,2,1],[1,3,3,1]]
         expect(pastri4.to_a).to eq(expected)
       end
     end
 
-    context "When initialized to 1" do
+    context "With triangle initialized to 1" do
       it "returns a single row triangle" do
         expected = [[1]]
         expect(pastri1.to_a).to eq(expected)
       end
     end
 
-    context "When initialized to 5" do
+    context "With triangle initialized to 5" do
       it "returns a 5-row triangle" do
         expected = [[1],[1,1],[1,2,1],[1,3,3,1],[1,4,6,4,1]]
         expect(pastri5.to_a).to eq(expected)
