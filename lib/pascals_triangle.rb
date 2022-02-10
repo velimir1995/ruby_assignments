@@ -3,7 +3,7 @@ class PascalsTriangle
   STARTING_ROW = [1].freeze
 
   def initialize(number_of_rows)
-    @number_of_rows = number_of_rows
+    @number_of_rows = number_of_rows.to_i
   end
 
   def to_s
@@ -22,7 +22,7 @@ class PascalsTriangle
 
   def generate_triangle
     @triangle = [STARTING_ROW]
-    (@number_of_rows.to_i-1).times do |row_number_index|
+    (@number_of_rows-1).times do |row_number_index|
       @triangle.push(create_row(row_number_index+1))
     end
     @triangle
