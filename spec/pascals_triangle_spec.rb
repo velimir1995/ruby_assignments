@@ -1,10 +1,11 @@
 require "pascals_triangle"
 describe PascalsTriangle do
 
+  let(:pastri4) { PascalsTriangle.new(4) }
+  let(:pastri1) { PascalsTriangle.new(1) }
+  let(:pastri5) { PascalsTriangle.new(5) }
+
   describe "#to_s" do
-    let(:pastri4) { PascalsTriangle.new(4) }
-    let(:pastri1) { PascalsTriangle.new(1) }
-    let(:pastri5) { PascalsTriangle.new(5) }
 
     context do
       it "returns a String" do
@@ -36,9 +37,6 @@ describe PascalsTriangle do
   end
 
   describe "#to_a" do
-    let(:pastri4) { PascalsTriangle.new(4) }
-    let(:pastri1) { PascalsTriangle.new(1) }
-    let(:pastri5) { PascalsTriangle.new(5) }
 
     context do
       it "returns an Array" do
