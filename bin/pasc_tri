@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+
+require_relative "../lib/pascals_triangle"
+
+def write_triangle(triangle)
+    if triangle.is_a?(Array)
+        line_width = triangle.last.to_s.length
+        triangle.each do |row|
+            puts (row.to_s.center(line_width))
+        end
+    elsif triangle.is_a?(String)
+        puts triangle.lines.map { |line| line.strip.center(triangle.lines.last.length) }
+    end
+end
+
+pas_tri = PascalsTriangle.new(ARGV[0])
+write_triangle(pas_tri.to_s)
+write_triangle(pas_tri.to_a)
