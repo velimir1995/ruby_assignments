@@ -32,7 +32,7 @@ class Anagrams
     elsif pairs.length == 2
       @grouped_anagrams = [pairs.transpose[0]] if pairs[0][1] == pairs[1][1]
     end
-    @grouped_anagrams.sort_by { |group| group[0] }
+    @grouped_anagrams
   end
 
   def fill_and_sort_words_with_char_order_pair
