@@ -12,10 +12,16 @@ def write_anagram(anagrams)
     end
 end
 
-anagram = Anagram.new(ARGV[0])
-if ARGV[1]
-  write_anagram(anagram.find_by_word(ARGV[1]))
+if (File.file?(ARGV[0]))
+  anagram = Anagram.new(ARGV[0])
+  if ARGV.length > 1
+    puts anagram.find_by_word(ARGV[1])
+  else
+    write_anagram(anagram.to_s)
+    write_anagram(anagram.to_a)
+  end
 else
+  anagram = Anagram.new(ARGV)
   write_anagram(anagram.to_s)
   write_anagram(anagram.to_a)
 end

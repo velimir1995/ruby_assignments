@@ -7,8 +7,8 @@ describe Anagram do
   let(:two_words_non_anagrams) do
     Anagram.new(Pathname.getwd.to_s + "/spec/support//dictionaries/two_words_non_anagrams.txt")
   end
-  let(:small_dictionary_anagrams) do
-    Anagram.new(Pathname.getwd.to_s + "/spec/support/dictionaries/small_dictionary.txt")
+  let(:small_pdf_dictionary_anagrams) do
+    Anagram.new(Pathname.getwd.to_s + "/spec/support/dictionaries/small_dictionary.pdf")
   end
   let(:small_dictionary_without_anagrams) do
     Anagram.new(Pathname.getwd.to_s + "/spec/support/dictionaries/small_dictionary_no_anagrams.txt")
@@ -28,7 +28,7 @@ describe Anagram do
         message1 = "enlist"
         expected1 = ["enlist", "inlets", "listen", "silent"]
         expect(string_dictonary.find_by_word(message)).to eq(expected)
-        expect(small_dictionary_anagrams.find_by_word(message1)).to eq(expected1)
+        expect(small_pdf_dictionary_anagrams.find_by_word(message1)).to eq(expected1)
       end
     end
 
@@ -37,7 +37,7 @@ describe Anagram do
         message = "bbbbb"
         message1 = "enlist"
         expect(string_dictonary.find_by_word(message)).to eq(nil)
-        expect(small_dictionary_anagrams.find_by_word(message)).to eq(nil)
+        expect(small_pdf_dictionary_anagrams.find_by_word(message)).to eq(nil)
         expect(small_dictionary_without_anagrams.find_by_word(message1)).to eq(nil)
       end
     end
@@ -49,7 +49,7 @@ describe Anagram do
       it "returns a String" do
         expect(two_words_anagrams.to_s).to be_a(String)
         expect(two_words_non_anagrams.to_s).to be_a(String)
-        expect(small_dictionary_anagrams.to_s).to be_a(String)
+        expect(small_pdf_dictionary_anagrams.to_s).to be_a(String)
         expect(small_dictionary_without_anagrams.to_s).to be_a(String)
         expect(single_line_file.to_s).to be_a(String)
         expect(string_dictonary.to_s).to be_a(String)
@@ -78,7 +78,7 @@ describe Anagram do
         expected = "atest State\nboaster boaters borates\ndog God\nenlist inlets listen silent\n"\
                   "fresher refresh\nrots sort"
         expected1 = "bup pub\nput tup"
-        expect(small_dictionary_anagrams.to_s).to eq(expected)
+        expect(small_pdf_dictionary_anagrams.to_s).to eq(expected)
         expect(array_dictonary.to_s). to eq(expected1)
       end
     end
@@ -91,7 +91,7 @@ describe Anagram do
       it "returns an Array" do
         expect(two_words_anagrams.to_a).to be_a(Array)
         expect(two_words_non_anagrams.to_a).to be_a(Array)
-        expect(small_dictionary_anagrams.to_a).to be_a(Array)
+        expect(small_pdf_dictionary_anagrams.to_a).to be_a(Array)
         expect(small_dictionary_without_anagrams.to_a).to be_a(Array)
         expect(single_line_file.to_a).to be_a(Array)
         expect(string_dictonary.to_a).to be_a(Array)
@@ -121,7 +121,7 @@ describe Anagram do
                   ["dog", "God"], ["enlist", "inlets", "listen", "silent"],
                   ["fresher", "refresh"], ["rots", "sort"]]
         expected1 = [["bup", "pub"], ["put", "tup"]]
-        expect(small_dictionary_anagrams.to_a).to eq(expected)
+        expect(small_pdf_dictionary_anagrams.to_a).to eq(expected)
         expect(string_dictonary.to_a).to eq(expected1)
       end
     end
