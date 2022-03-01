@@ -5,7 +5,7 @@ require_relative "../lib/anagrams"
 def write_anagram(anagrams)
     if anagrams.is_a?(Array)
       anagrams.each do |group|
-        puts group.join(" ")
+        group.is_a?(Array) ? puts(group.join(" ")) : puts(group)
       end
     elsif anagrams.is_a?(String)
       puts anagrams
@@ -13,5 +13,9 @@ def write_anagram(anagrams)
 end
 
 anagram = Anagrams.new(ARGV[0])
-write_anagram(anagram.to_s)
-write_anagram(anagram.to_a)
+if ARGV[1]
+  write_anagram(anagram.find_by_word(ARGV[1]))
+else
+  write_anagram(anagram.to_s)
+  write_anagram(anagram.to_a)
+end

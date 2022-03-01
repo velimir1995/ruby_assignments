@@ -14,6 +14,10 @@ class Anagrams
     find_anagrams
   end
 
+  def find_by_word(word)
+    find_anagrams.find { |group| group.include?(word) }
+  end
+
   private
 
   def find_anagrams
