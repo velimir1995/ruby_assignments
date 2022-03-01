@@ -12,7 +12,7 @@ def write_anagram(anagrams)
     end
 end
 
-anagram = Anagrams.new(ARGV[0])
+anagram = Anagram.new(ARGV[0])
 if ARGV[1]
   write_anagram(anagram.find_by_word(ARGV[1]))
 else

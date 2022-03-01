@@ -1,9 +1,9 @@
 require 'pathname'
 
-class Anagrams
+class Anagram
 
-  def initialize(text_file)
-    @text_file = text_file
+  def initialize(text_source)
+    @text_source = text_source
   end
 
   def to_s
@@ -26,22 +26,43 @@ class Anagrams
 
   def search_for_anagrams
     @grouped_anagrams = []
-    pairs = fill_and_sort_words_with_char_order_pair
+    pairs = populate_pairs
     if pairs.length > 2
       group_into_anagrams_groups(pairs)
     elsif pairs.length == 2
       @grouped_anagrams = [pairs.transpose[0]] if pairs[0][1] == pairs[1][1]
     end
-    @grouped_anagrams
+    @grouped_anagrams.sort_by { |group| group[0] }
   end
 
-  def fill_and_sort_words_with_char_order_pair
+  def populate_pairs
+    pairs = if @text_source.is_a?(Array) then populate_pairs_from_array
+            elsif File.file?(@text_source) then populate_pairs_from_file
+            else populate_pairs_from_string
+            end
+    pairs.sort_by { |pair| pair[1] }
+  end
+
+  def populate_pairs_from_array
     paired_words = []
-    file = File.open(Pathname.getwd.to_s + "/documents/#{@text_file}.txt")
+    @text_source.each do |word|
+      paired_words.push([word.strip, word.strip.downcase.chars.sort.join])
+    end
+    paired_words
+  end
+
+  def populate_pairs_from_string
+    @text_source = @text_source.split(" ");
+    populate_pairs_from_array
+  end
+
+  def populate_pairs_from_file
+    paired_words = []
+    file = File.open(@text_source)
     File.readlines(file).each do |line|
       paired_words.push([line.strip, line.strip.downcase.chars.sort.join])
     end
-    paired_words.sort_by { |pair| pair[1] }
+    paired_words
   end
 
   def group_into_anagrams_groups(pairs)
