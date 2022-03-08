@@ -5,7 +5,7 @@ describe Anagram do
     Anagram.new(Pathname.getwd.to_s + "/spec/support/dictionaries/two_words_anagrams.txt")
   end
   let(:two_words_non_anagrams) do
-    Anagram.new(Pathname.getwd.to_s + "/spec/support//dictionaries/two_words_non_anagrams.txt")
+    Anagram.new(Pathname.getwd.to_s + "/spec/support/dictionaries/two_words_non_anagrams.txt")
   end
   let(:small_pdf_dictionary_anagrams) do
     Anagram.new(Pathname.getwd.to_s + "/spec/support/dictionaries/small_dictionary.pdf")
@@ -45,6 +45,7 @@ describe Anagram do
   end
 
   describe "#to_s" do
+
     context do
       it "returns a String" do
         expect(two_words_anagrams.to_s).to be_a(String)
