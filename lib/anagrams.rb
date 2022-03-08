@@ -26,9 +26,9 @@ class Anagram
     anagrams = []
     pairs = populate_pairs
     if pairs.length > 2
-      group_into_anagrams_groups(pairs)
+      anagrams = group_into_anagrams_groups(pairs)
     elsif pairs.length == 2
-      @grouped_anagrams = [pairs.transpose[0]] if pairs[0][1] == pairs[1][1]
+      anagrams = [pairs.transpose[0]] if pairs[0][1] == pairs[1][1]
     end
     anagrams.sort_by { |group| group[0] }
   end
@@ -64,13 +64,15 @@ class Anagram
   end
 
   def group_into_anagrams_groups(pairs)
+    anagrams = []
     pairs.each_with_index do |pair, index|
       if pair[1] == pairs[index - 2][1]
-        @grouped_anagrams[@grouped_anagrams.length - 1].push(pair[0])
+        anagrams[anagrams.length - 1].push(pair[0])
       elsif pair[1] == pairs[index - 1][1]
-        @grouped_anagrams.push([pairs[index - 1][0], pair[0]])
+        anagrams.push([pairs[index - 1][0], pair[0]])
       end
     end
+    anagrams
   end
 
 end
