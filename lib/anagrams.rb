@@ -5,15 +5,15 @@ class Anagram
   end
 
   def to_s
-    grouped_anagrams.map { |group| group.join(" ") }.join("\n")
+    to_a.map { |group| group.join(" ") }.join("\n")
   end
 
   def to_a
-    grouped_anagrams
+    grouped_anagrams.values
   end
 
   def find_by_word(word)
-    grouped_anagrams.find { |group| group.include?(word) }
+    grouped_anagrams[word.strip.downcase.chars.sort.join]
   end
 
   private
@@ -32,7 +32,7 @@ class Anagram
         anagrams.merge!(sorted_chars => [word])
       end
     end
-    anagrams.values.delete_if { |words| words.length < 2}
+    anagrams.delete_if { |key, value| value.length < 2}
   end
 
   def set_words_to_array(dictionary)
