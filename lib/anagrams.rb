@@ -50,6 +50,6 @@ class Anagram
   end
 
   def sort_letters(word)
-    word.gsub(/[^a-zA-Z]/, '').downcase.chars.sort.join
+    word.downcase.gsub(/[^a-z]/, '').chars.sort.join
   end
 end
