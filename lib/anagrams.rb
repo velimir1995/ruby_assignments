@@ -13,7 +13,7 @@ class Anagram
   end
 
   def find_by_word(word)
-    grouped_anagrams[word.strip.downcase.chars.sort.join]
+    grouped_anagrams[sort_letters(word)]
   end
 
   private
@@ -25,12 +25,8 @@ class Anagram
   def search_for_anagrams
     anagrams = {}
     set_words_to_array(@dictionary).each do |word|
-      sorted_chars = word.strip.downcase.chars.sort.join
-      if anagrams[sorted_chars]
-        anagrams[sorted_chars] << word
-      else
-        anagrams.merge!(sorted_chars => [word])
-      end
+      sorted_chars = sort_letters(word)
+      anagrams[sorted_chars] ? anagrams[sorted_chars] << word : anagrams[sorted_chars] = [word]
     end
     anagrams.delete_if { |key, value| value.length < 2}
   end
@@ -54,4 +50,7 @@ class Anagram
     wordslist
   end
 
+  def sort_letters(word)
+    word.gsub(/[^a-zA-Z]/, '').downcase.chars.sort.join
+  end
 end

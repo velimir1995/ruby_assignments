@@ -77,7 +77,7 @@ describe Anagram do
     context "With wordlist with anagrams " do
       it "returns an anagrams grouped in lines" do
         expected = "atest State\nboaster boaters borates\ndog God\nenlist inlets listen silent\n"\
-                  "fresher refresh\nrots sort"
+                  "fresher refresh\nrots sort\nwoodworm's wormwood's woodworms wormwoods"
         expected1 = "bup pub\nput tup"
         expect(small_pdf_dictionary_anagrams.to_s).to eq(expected)
         expect(array_dictonary.to_s). to eq(expected1)
@@ -120,7 +120,7 @@ describe Anagram do
       it "returns anagrams grouped in subarrays" do
         expected = [["atest", "State"], ["boaster", "boaters", "borates"],
                   ["dog", "God"], ["enlist", "inlets", "listen", "silent"],
-                  ["fresher", "refresh"], ["rots", "sort"]]
+                  ["fresher", "refresh"], ["rots", "sort"], ["woodworm's", "wormwood's", "woodworms", "wormwoods"]]
         expected1 = [["bup", "pub"], ["put", "tup"]]
         expect(small_pdf_dictionary_anagrams.to_a).to eq(expected)
         expect(string_dictonary.to_a).to eq(expected1)
