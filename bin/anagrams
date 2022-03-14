@@ -2,26 +2,18 @@
 
 require_relative "../lib/anagrams"
 
-def write_anagram(anagrams)
-    if anagrams.is_a?(Array)
-      anagrams.each do |group|
-        group.is_a?(Array) ? puts(group.join(" ")) : puts(group)
-      end
-    elsif anagrams.is_a?(String)
-      puts anagrams
-    end
+if File.file?(ARGV[0])
+  dictionary = ARGV[0]
+  word = ARGV[1]
+else
+  dictionary = ARGV
+  word = nil
 end
 
-if (File.file?(ARGV[0]))
-  anagram = Anagram.new(ARGV[0])
-  if ARGV.length > 1
-    puts anagram.find_by_word(ARGV[1])
-  else
-    write_anagram(anagram.to_s)
-    write_anagram(anagram.to_a)
-  end
+anagram = Anagram.new(dictionary)
+
+if word
+  puts anagram.find_by_word(word)
 else
-  anagram = Anagram.new(ARGV)
-  write_anagram(anagram.to_s)
-  write_anagram(anagram.to_a)
+  puts anagram
 end
