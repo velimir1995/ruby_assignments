@@ -1,5 +1,4 @@
 class Anagram
-
   def initialize(dictionary)
     @dictionary = dictionary
   end
@@ -24,24 +23,24 @@ class Anagram
 
   def search_for_anagrams
     anagrams = {}
-    set_words_to_array(@dictionary).each do |word|
+    load_dictionary(@dictionary).each do |word|
       sorted_chars = sort_letters(word)
       anagrams[sorted_chars] ? anagrams[sorted_chars] << word : anagrams[sorted_chars] = [word]
     end
-    anagrams.delete_if { |key, value| value.length < 2}
+    anagrams.delete_if { |key, value| value.length < 2 }
   end
 
-  def set_words_to_array(dictionary)
+  def load_dictionary(dictionary)
     if dictionary.is_a?(Array)
       dictionary
     elsif File.file?(dictionary)
-      populate_words_from_file(dictionary)
+      load_dictionary_from_file(dictionary)
     elsif dictionary.is_a?(String)
       dictionary.split(" ");
     end
   end
 
-  def populate_words_from_file(dictionary)
+  def load_dictionary_from_file(dictionary)
     wordslist = []
     file = File.open(dictionary)
     File.readlines(file).each do |line|
