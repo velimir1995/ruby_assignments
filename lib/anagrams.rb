@@ -25,7 +25,8 @@ class Anagram
     anagrams = {}
     load_dictionary(@dictionary).each do |word|
       sorted_chars = sort_letters(word)
-      anagrams[sorted_chars] ? anagrams[sorted_chars] << word : anagrams[sorted_chars] = [word]
+      anagrams[sorted_chars] ||= []
+      anagrams[sorted_chars] << word
     end
     anagrams.delete_if { |key, value| value.length < 2 }
   end
