@@ -13,7 +13,7 @@ describe Anagram do
 
   describe "#find_by_word" do
 
-    context "when match" do
+    context "when there are matching anagrams" do
       it "returns a group of words that are anagrams" do
         message = "enlist"
         expected = ["enlist", "inlets", "listen", "silent"]
@@ -21,7 +21,7 @@ describe Anagram do
       end
     end
 
-    context "when does n`t match" do
+    context "when there are no matching anagrams" do
       it "returns nil" do
         message = "bbbbb"
         expect(anagrams_in_pdf.find_by_word(message)).to eq(nil)
@@ -36,7 +36,7 @@ describe Anagram do
       expect(anagrams_in_pdf.to_s).to be_a(String)
     end
 
-    context "When there is no anagrams " do
+    context "When there are no anagrams " do
       it "returns an empty String" do
         expect(no_anagrams_in_txt.to_s).to eq("")
       end
@@ -58,14 +58,14 @@ describe Anagram do
       expect(anagrams_in_pdf.to_a).to be_a(Array)
     end
 
-    context "When there is no anagrams in file  " do
+    context "When there are no anagrams in file " do
       it "returns an empty Array" do
         expect(no_anagrams_in_txt.to_a).to eq([])
       end
     end
 
     context "When there are words with special characters " do
-      it "ignores non-letter characters in words and is case-insensitive" do
+      it "ignores non-letter characters in words and is case-insensitive about letters" do
         expected = [["atest", "State"], ["boaster", "boaters", "borates"],
                   ["dog", "God"], ["enlist", "inlets", "listen", "silent"],
                   ["fresher", "refresh"], ["rots", "sort"], ["woodworm's", "wormwood's", "woodworms", "wormwoods"]]
@@ -73,20 +73,20 @@ describe Anagram do
       end
     end
 
-    context "When two anagrams words" do
+    context "When there are two words that are anagrams" do
       it "returns that pair" do
         expected = [["spot", "post"]]
         expect(anagrams_in_two_words_array.to_a).to eq(expected)
       end
     end
 
-    context "When two non-anagrams words" do
+    context "When there are two words that are not anagrams" do
       it "returns an empty array" do
         expect(no_anagrams_in_two_words_string.to_a).to eq([])
       end
     end
 
-    context "When single word " do
+    context "When there is single word " do
       it "returns an empty array" do
         expect(no_anagrams_in_single_word_array.to_a).to eq([])
       end
