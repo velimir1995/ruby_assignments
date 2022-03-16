@@ -8,14 +8,13 @@ describe Anagram do
     Anagram.new(File.dirname(__FILE__) + "/support/dictionaries/small_dictionary_no_anagrams.txt")
   end
   let(:anagrams_in_two_words_array) { Anagram.new(["spot", "post"]) }
-  let(:no_anagrams_in_one_word_array) { Anagram.new(["non_anagram"]) }
-  let(:anagrams_in_String) { Anagram.new("bup club dub pap pub put tup") }
-  let(:anagrams_in_array) { Anagram.new(["bup", "club","dub", "pap", "pub", "put", "tup"]) }
+  let(:no_anagrams_in_two_words_string) { Anagram.new("pasta water") }
+  let(:no_anagrams_in_single_word_array) { Anagram.new(["non_anagram"]) }
 
   describe "#find_by_word" do
 
     context "when match" do
-      it "returns a group of words that are anagram" do
+      it "returns a group of words that are anagrams" do
         message = "enlist"
         expected = ["enlist", "inlets", "listen", "silent"]
         expect(anagrams_in_pdf.find_by_word(message)).to eq(expected)
@@ -72,12 +71,31 @@ describe Anagram do
       end
     end
 
-    context "When there are anagrams " do
-      it "returns anagrams grouped in subarrays" do
+    context "When there are words with special characters " do
+      it "ignores non-letter characters in words and is case-insensitive" do
         expected = [["atest", "State"], ["boaster", "boaters", "borates"],
                   ["dog", "God"], ["enlist", "inlets", "listen", "silent"],
                   ["fresher", "refresh"], ["rots", "sort"], ["woodworm's", "wormwood's", "woodworms", "wormwoods"]]
         expect(anagrams_in_pdf.to_a).to eq(expected)
+      end
+    end
+
+    context "When two anagrams words" do
+      it "returns that pair" do
+        expected = [["spot", "post"]]
+        expect(anagrams_in_two_words_array.to_a).to eq(expected)
+      end
+    end
+
+    context "When two non-anagrams words" do
+      it "returns an empty array" do
+        expect(no_anagrams_in_two_words_string.to_a).to eq([])
+      end
+    end
+
+    context "When single word " do
+      it "returns an empty array" do
+        expect(no_anagrams_in_single_word_array.to_a).to eq([])
       end
     end
 
