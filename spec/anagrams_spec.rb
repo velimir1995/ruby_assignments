@@ -21,17 +21,10 @@ describe Anagram do
       end
     end
 
-    context "when don`t match" do
+    context "when does n`t match" do
       it "returns nil" do
         message = "bbbbb"
         expect(anagrams_in_pdf.find_by_word(message)).to eq(nil)
-      end
-    end
-
-    context "when search where is no anagrams" do
-      it "returns nil" do
-        message = "club"
-        expect(no_anagrams_in_txt.find_by_word(message)).to eq(nil)
       end
     end
 
