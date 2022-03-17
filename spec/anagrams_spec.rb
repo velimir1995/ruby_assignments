@@ -7,7 +7,7 @@ describe Anagram do
   let(:no_anagrams_in_txt) do
     Anagram.new(File.dirname(__FILE__) + "/support/dictionaries/small_dictionary_no_anagrams.txt")
   end
-  let(:anagrams_in_two_words_array) { Anagram.new(["spot", "post"]) }
+  let(:anagrams_in_two_words_array) { Anagram.new(["God", "dog"]) }
   let(:no_anagrams_in_two_words_string) { Anagram.new("pasta water") }
   let(:no_anagrams_in_single_word_array) { Anagram.new(["non_anagram"]) }
 
@@ -65,7 +65,7 @@ describe Anagram do
     end
 
     context "When there are words with special characters " do
-      it "ignores non-letter characters in words and is case-insensitive about letters" do
+      it "ignores non-letter characters in words" do
         expected = [["atest", "State"], ["boaster", "boaters", "borates"],
                   ["dog", "God"], ["enlist", "inlets", "listen", "silent"],
                   ["fresher", "refresh"], ["rots", "sort"], ["woodworm's", "wormwood's", "woodworms", "wormwoods"]]
@@ -73,9 +73,17 @@ describe Anagram do
       end
     end
 
+
+    context "When there are Up and Down cased words " do
+      it "ignores case sensitivity" do
+        expected = [["God", "dog"]]
+        expect(anagrams_in_two_words_array.to_a).to eq(expected)
+      end
+    end
+
     context "When there are two words that are anagrams" do
       it "returns that pair" do
-        expected = [["spot", "post"]]
+        expected = [["God", "dog"]]
         expect(anagrams_in_two_words_array.to_a).to eq(expected)
       end
     end
