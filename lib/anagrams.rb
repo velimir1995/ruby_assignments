@@ -37,7 +37,7 @@ class Anagram
     elsif File.file?(dictionary)
       load_dictionary_from_file(dictionary)
     elsif dictionary.is_a?(String)
-      dictionary.split(" ");
+      dictionary.split(" ")
     end
   end
 
