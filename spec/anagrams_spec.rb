@@ -2,7 +2,7 @@ require "anagrams"
 describe Anagram do
 
   let(:anagrams_in_pdf) do
-    Anagram.new(File.dirname(__FILE__) + "/support/dictionaries/small_dictionary.pdf")
+    Anagram.new(File.dirname(__FILE__) + "/support/dictionaries/small_dictionary.PDF")
   end
   let(:no_anagrams_in_txt) do
     Anagram.new(File.dirname(__FILE__) + "/support/dictionaries/small_dictionary_no_anagrams.txt")
@@ -94,7 +94,7 @@ describe Anagram do
       end
     end
 
-    context "When there is single word " do
+    context "When there is a single word " do
       it "returns an empty array" do
         expect(no_anagrams_in_single_word_array.to_a).to eq([])
       end

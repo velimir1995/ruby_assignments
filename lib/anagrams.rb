@@ -23,7 +23,8 @@ class Anagram
 
   def search_for_anagrams
     anagrams = {}
-    load_dictionary(@dictionary).each do |word|
+    dictionary = load_dictionary(@dictionary)
+    dictionary.each do |word|
       sorted_chars = sort_letters(word)
       anagrams[sorted_chars] ||= []
       anagrams[sorted_chars] << word
