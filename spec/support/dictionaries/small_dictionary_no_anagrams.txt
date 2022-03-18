@@ -1,0 +1,6 @@
+peasant
+citizen
+farm
+office
+houst
+apartment

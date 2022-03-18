@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+
+require_relative "../lib/anagrams"
+
+if File.file?(ARGV[0])
+  dictionary = ARGV[0]
+  word = ARGV[1]
+else
+  dictionary = ARGV
+  word = nil
+end
+
+anagram = Anagram.new(dictionary)
+
+if word
+  puts anagram.find_by_word(word)
+else
+  puts anagram
+end
